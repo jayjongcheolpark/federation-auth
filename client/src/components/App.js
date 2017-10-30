@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import styled from 'styled-components'
 
 import Header from './Header'
 import Landing from './Landing'
 import DashBoard from './DashBoard'
 
+const Div = styled.div`
+  background: papayawhip
+`
+
 class App extends Component {
   render () {
     return (
-      <div>
+      <Div>
         <Header />
         <BrowserRouter>
           <Switch>
@@ -16,7 +21,7 @@ class App extends Component {
             <Route path="/dashboard" component={DashBoard} />
           </Switch>
         </BrowserRouter>
-      </div>
+      </Div>
     )
   }
 }
