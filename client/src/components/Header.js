@@ -5,7 +5,8 @@ import { fetchUser } from '../actions'
 
 class Header extends Component {
   componentDidMount() {
-    // this.props.fetchUser()
+    this.props.fetchUser()
+    console.log(this.props.currentUser)
   }
   renderContent() {
         return (
