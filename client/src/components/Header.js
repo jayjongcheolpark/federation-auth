@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
+import btn_google_signin from '../images/btn_google_signin.png'
 import { fetchUser } from '../actions'
 
 const Div = styled.div`
@@ -19,17 +20,30 @@ const A = styled.a`
   text-decoration: none;
 `
 
+const Img = styled.img`
+  width: 120px;
+  height: 30px;
+`
+
 class Header extends Component {
   componentDidMount() {
     this.props.fetchUser()
-    console.log(this.props.currentUser)
   }
+
   renderContent() {
-        return (
-          <li>
-            <A href="/auth/google">Login With Google</A>
-          </li>
-        )
+    if (this.props.currentUser) {
+      return (
+        <li>
+          <A href="/api/logout">Logout</A>
+        </li>
+      )
+    } else {
+      return (
+        <li>
+          <A href="/auth/google"><Img src={btn_google_signin} alt="google_signin" /></A>
+        </li>
+      )
+    }
   }
 
   render () {
@@ -53,7 +67,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state
+    currentUser: state.user.user
   }
 }
 
